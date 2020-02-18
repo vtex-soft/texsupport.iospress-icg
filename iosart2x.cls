@@ -21,7 +21,6 @@
 %%   Strength, Fracture and Complexity (SFC)
 %%   Technology and Health Care (THC)
 %%   Journal on Satisfiability, Boolean Modeling and Computation (SAT)
-%%   Journal of Future Robot Life (FRL)
 %%  -
 %%   AI Communications (AIC)
 %%   Risk and Decision Analysis (RDA)
@@ -61,8 +60,8 @@
 %%
 
 \def\fmt@name{iosart2x}
-\def\fmt@date{2020/02/06}
-\def\fmt@version{1.3.13}
+\def\fmt@date{2019/11/20}
+\def\fmt@version{1.3.12}
 \NeedsTeXFormat{LaTeX2e}[2000/01/26]
 \ProvidesClass\fmt@name
               [\fmt@date\space v\fmt@version\space IOS Press]
@@ -350,22 +349,6 @@
   \global\@twocolumnfalse \global\@restonecoltrue
   \gdef\eleven@pt{}%
   \gdef\@open@access@control{1}%
-  }
-\DeclareOption{frl}{%
-  \gdef\@jid{frl}
-  \gdef\@JID{FRL}
-  \gdef\@issn{2589-9953}
-  \gdef\@eissn{2589-9961}%
-  \gdef\@price{35.00}%
-  \gdef\@journal{Journal of Future Robot Life}
-  \gdef\ios@journal@layout{1}%
-  \global\@twocolumnfalse \global\@restonecoltrue
-  \gdef\eleven@pt{}%
-  \def\tagbib@style{bibstyle2}% IOS 2
-  \global\@nameyeartrue
-  \AtBeginDocument{%
-    \global\def\esm@skip@suppress{\dimexpr-3.5\baselineskip\relax}%
-    }%
   }
 %% <<< 1 layout <<<
 
@@ -791,7 +774,6 @@
       \cslet{sidewaystable*}\undefined
       }
   }
-\let\init@ios@journal@FRL@settings\init@ios@journal@ICG@settings
 \def\init@ios@journal@INF@settings{
   \def\theaddress{\arabic{address}}
   \def\@copyrightowner{Vilnius University}
@@ -969,13 +951,12 @@
   \addtolength\textheight{-15.1\p@}%
 \fi
 
-\def\init@ios@journal@ICG@textframe{%
+\def\ICG@JID{ICG}
+\ifx\@JID\ICG@JID
   \setlength\textwidth{156mm}%
   %% 47*baselineskip = 47*13 = 611pt
   \setlength\textheight{\the\dimexpr 611pt + \topskip\relax}%
-  }
-\let\init@ios@journal@FRL@textframe\init@ios@journal@ICG@textframe
-\@nameuse{init@ios@journal@\@JID @textframe}
+\fi
 
 \setlength\columnsep{26\p@}  %9mm 
 \ifnum\ios@journal@layout>\@ne
